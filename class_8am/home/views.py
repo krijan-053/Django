@@ -71,3 +71,20 @@ def signup(request):
             messages.error(request, 'The Password Does Not Match')
 
     return render(request,'signup.html')
+
+def product_review(request,slug):
+    username = request.user.username
+    email = request.user.email
+    if request.method == "POST":
+        star = request.POST['star']
+        comment = request.POST['star']
+        data = ProductReview.objects.create(
+            username = username,
+            email = email,
+            star = star,
+            comment = comment,
+            slug = slug
+        )
+        data.save()
+
+    return redirect(f'/detail/{slug}')

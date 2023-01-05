@@ -69,3 +69,13 @@ class Product(models.Model):
     def __str__(self):
         return self.name
     
+class ProductReview(models.Model):
+    username = models.CharField(max_length = 300)
+    email = models.EmailField(max_length = 300)
+    comment = models.TextField()
+    slug = models.CharField(max_length=300)
+    star= models.IntegerField()
+    date= models.CharField(max_length=300)
+
+    def __str__(self):
+        return self.username
